@@ -1,0 +1,91 @@
+<div class="container">
+  <h2>{{ editIndex !== null ? 'Edit Movie' : 'Add New Movie' }}</h2>
+  <div style="text-align: right; margin-bottom: 1rem;">
+    <button class="edit-btn" (click)="goToAddedMovies()">Added Movies</button>
+    <button class="edit-btn" (click)="goToTodayReport()">Today's Report</button>
+    <button class="back-btn" (click)="goToMain()">Back to Main</button>
+  </div>
+
+  <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>Movie Name:</label>
+      <input type="text" formControlName="movieName">
+      <div *ngIf="movieForm.get('movieName')?.touched && movieForm.get('movieName')?.invalid" class="error">
+        <span *ngIf="movieForm.get('movieName')?.errors?.['required']">Movie name is required.</span>
+        <span *ngIf="movieForm.get('movieName')?.errors?.['minlength']">Must be at least 2 characters.</span>
+        <span *ngIf="movieForm.get('movieName')?.errors?.['maxlength']">Cannot exceed 100 characters.</span>
+      </div>
+    </div>
+    <div>
+      <label>Duration:</label>
+      <input type="text" formControlName="duration" placeholder="e.g., 120 min">
+      <div *ngIf="movieForm.get('duration')?.touched && movieForm.get('duration')?.invalid" class="error">
+        <span *ngIf="movieForm.get('duration')?.errors?.['required']">Duration is required.</span>
+        <span *ngIf="movieForm.get('duration')?.errors?.['pattern']">Enter a number (e.g., 120 min).</span>
+      </div>
+    </div>
+    <div>
+      <label>Description:</label>
+      <textarea formControlName="description"></textarea>
+      <div *ngIf="movieForm.get('description')?.touched && movieForm.get('description')?.invalid" class="error">
+        <span *ngIf="movieForm.get('description')?.errors?.['required']">Description is required.</span>
+        <span *ngIf="movieForm.get('description')?.errors?.['minlength']">Must be at least 10 characters.</span>
+        <span *ngIf="movieForm.get('description')?.errors?.['maxlength']">Cannot exceed 500 characters.</span>
+      </div>
+    </div>
+    <div>
+      <label>Release Date:</label>
+      <input 
+        type="date" 
+        formControlName="releaseDate" 
+        [min]="today"
+      >
+      <div *ngIf="movieForm.get('releaseDate')?.touched && movieForm.get('releaseDate')?.invalid" class="error">
+        <span *ngIf="movieForm.get('releaseDate')?.errors?.['required']">Release date is required.</span>
+      </div>
+    </div>
+    <div>
+      <label>Show Times (Hold Ctrl/Cmd to select multiple):</label>
+      <select multiple formControlName="showTimes" size="5">
+        <option *ngFor="let time of showTimes" [value]="time">{{ time }}</option>
+      </select>
+      <div *ngIf="movieForm.get('showTimes')?.touched && movieForm.get('showTimes')?.invalid" class="error">
+        <span *ngIf="movieForm.get('showTimes')?.errors?.['required']">At least one show time is required.</span>
+      </div>
+    </div>
+    <div>
+      <label>Poster (Upload or URL):</label>
+      <input type="url" formControlName="posterUrl" placeholder="e.g., https://example.com/poster.jpg" (change)="onUrlChange('poster')">
+      <div *ngIf="movieForm.get('poster')?.touched && movieForm.get('poster')?.invalid" class="error">
+        <span *ngIf="movieForm.get('poster')?.errors?.['required']">Poster is required.</span>
+      </div>
+    </div>
+    <div>
+      <label>Trailer URL:</label>
+      <input type="url" formControlName="trailer" placeholder="e.g., https://youtube.com/...">
+      <div *ngIf="movieForm.get('trailer')?.touched && movieForm.get('trailer')?.invalid" class="error">
+        <span *ngIf="movieForm.get('trailer')?.errors?.['required']">Trailer URL is required.</span>
+        <span *ngIf="movieForm.get('trailer')?.errors?.['pattern']">Enter a valid video URL (YouTube/Vimeo).</span>
+      </div>
+    </div>
+    <div>
+      <label>Language:</label>
+      <input type="text" formControlName="language">
+      <div *ngIf="movieForm.get('language')?.touched && movieForm.get('language')?.invalid" class="error">
+        <span *ngIf="movieForm.get('language')?.errors?.['required']">Language is required.</span>
+        <span *ngIf="movieForm.get('language')?.errors?.['minlength']">Must be at least 2 characters.</span>
+        <span *ngIf="movieForm.get('language')?.errors?.['maxlength']">Cannot exceed 50 characters.</span>
+      </div>
+    </div>
+    <div>
+      <label>Movie Type (Hold Ctrl/Cmd to select multiple):</label>
+      <select multiple formControlName="movieType" size="5">
+        <option *ngFor="let type of movieTypes" [value]="type">{{ type }}</option>
+      </select>
+      <div *ngIf="movieForm.get('movieType')?.touched && movieForm.get('movieType')?.invalid" class="error">
+        <span *ngIf="movieForm.get('movieType')?.errors?.['required']">At least one movie type is required.</span>
+      </div>
+    </div>
+    <button type="submit" [disabled]="movieForm.invalid">{{ editIndex !== null ? 'Update Movie' : 'Add Movie' }}</button>
+  </form>
+</div>

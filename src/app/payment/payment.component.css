@@ -1,0 +1,213 @@
+/* General Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* Payment Container */
+.payment-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.payment-container h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #d32f2f; /* BookMyShow red */
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Payment Details */
+.payment-details {
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+}
+
+.payment-details p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.payment-details p strong {
+  color: #333;
+  font-weight: 600;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #d32f2f;
+  outline: none;
+}
+
+.form-group select {
+  appearance: none;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path fill="%23333" d="M7 10l5 5 5-5z"/></svg>') no-repeat right 10px center;
+  background-size: 12px;
+}
+
+/* Pay Button */
+.pay-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pay-btn:hover {
+  background-color: #b71c1c;
+}
+
+/* Success Message */
+.success-message {
+  text-align: center;
+  padding: 20px;
+}
+
+.success-message h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #28a745; /* Green for success */
+  margin-bottom: 15px;
+}
+
+.success-message p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.home-btn,
+.export-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 5px;
+}
+
+.home-btn {
+  background-color: #d32f2f;
+}
+
+.home-btn:hover {
+  background-color: #b71c1c;
+}
+
+.export-btn {
+  background-color: #007bff; /* Blue for export */
+}
+
+.export-btn:hover {
+  background-color: #0056b3;
+}
+
+/* No Movie Message */
+.no-movie {
+  text-align: center;
+  font-size: 16px;
+  color: #777;
+  padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .payment-container {
+    margin: 10px;
+    padding: 15px;
+  }
+
+  .payment-container h1 {
+    font-size: 20px;
+  }
+
+  .payment-details p,
+  .success-message p {
+    font-size: 14px;
+  }
+
+  .form-group input,
+  .form-group select {
+    font-size: 13px;
+  }
+
+  .pay-btn,
+  .home-btn,
+  .export-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .success-message h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .payment-container {
+    padding: 10px;
+  }
+
+  .payment-container h1 {
+    font-size: 18px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+  }
+
+  .pay-btn,
+  .home-btn,
+  .export-btn {
+    padding: 8px;
+  }
+}

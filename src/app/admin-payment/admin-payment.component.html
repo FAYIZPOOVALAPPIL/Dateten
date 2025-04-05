@@ -1,0 +1,76 @@
+<div class="header">
+    <h1>Admin Payment Management</h1>
+  </div>
+  
+  <div class="container">
+    
+    <div class="filter-section">
+      <label>Filter by Movie: </label>
+      <input [(ngModel)]="filterMovie" (input)="applyFilters()" placeholder="Enter movie name" />
+      
+      <label>Filter by Date: </label>
+      <input type="date" [(ngModel)]="filterDate" (input)="applyFilters()" />
+      
+      <button (click)="clearFilters()">Clear Filters</button>
+    </div>
+  
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Movie Name</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Seats</th>
+          <th>Total Amount</th>
+          <th>Mobile</th>
+          <th>Email</th>
+          <th>Payment Method</th>
+          <th>Payment Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="filteredPayments.length === 0">
+          <td colspan="10">No payments match the filters</td>
+        </tr>
+        <tr *ngFor="let payment of filteredPayments; let i=index">
+          <ng-container *ngIf="editIndex !== i; else editRow">
+            <td data-label="Movie Name">{{payment.movieName}}</td>
+            <td data-label="Date">{{payment.selectedDate}}</td>
+            <td data-label="Time">{{payment.selectedTime}}</td>
+            <td data-label="Seats">{{getFormattedSeats(payment.selectedSeats)}}</td>
+            <td data-label="Total Amount">{{payment.totalAmount}}</td>
+            <td data-label="Mobile">{{payment.mobileNumber}}</td>
+            <td data-label="Email">{{payment.emailId}}</td>
+            <td data-label="Payment Method">{{payment.paymentMethod}}</td>
+            <td data-label="Payment Date">{{payment.paymentDate | date:'medium'}}</td>
+            <td data-label="Actions">
+              <button (click)="startEdit(i)">Edit</button>
+              <button (click)="deletePayment(i)">Delete</button>
+            </td>
+          </ng-container>
+          <ng-template #editRow>
+            <td data-label="Movie Name"><input *ngIf="editedPayment" [(ngModel)]="editedPayment.movieName" /></td>
+            <td data-label="Date"><input *ngIf="editedPayment" [(ngModel)]="editedPayment.selectedDate" type="date" /></td>
+            <td data-label="Time"><input *ngIf="editedPayment" [(ngModel)]="editedPayment.selectedTime" /></td>
+            <td data-label="Seats">{{getFormattedSeats(payment.selectedSeats)}}</td>
+            <td data-label="Total Amount"><input *ngIf="editedPayment" type="number" [(ngModel)]="editedPayment.totalAmount" /></td>
+            <td data-label="Mobile"><input *ngIf="editedPayment" [(ngModel)]="editedPayment.mobileNumber" /></td>
+            <td data-label="Email"><input *ngIf="editedPayment" [(ngModel)]="editedPayment.emailId" /></td>
+            <td data-label="Payment Method">
+              <select *ngIf="editedPayment" [(ngModel)]="editedPayment.paymentMethod">
+                <option value="card">Credit Card</option>
+                <option value="upi">UPI</option>
+              </select>
+            </td>
+            <td data-label="Payment Date">{{payment.paymentDate | date:'medium'}}</td>
+            <td data-label="Actions">
+              <button (click)="saveEdit()">Save</button>
+              <button (click)="cancelEdit()">Cancel</button>
+            </td>
+          </ng-template>
+        </tr>
+      </tbody>
+    </table>
+  </div>

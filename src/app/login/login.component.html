@@ -1,0 +1,69 @@
+
+<div class="login-container">
+  <!-- Toggle Buttons -->
+  <div class="toggle-buttons">
+    <button [class.active]="isLogin" (click)="toggleForm(true)">Login</button>
+    <button [class.active]="!isLogin" (click)="toggleForm(false)">Register</button>
+  </div>
+
+  <!-- Login Form -->
+  <div class="form-wrapper" *ngIf="isLogin">
+    <h1>Login</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+      <div class="form-group">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" formControlName="email" placeholder="Enter your email">
+        <div *ngIf="loginSubmitted && lf['email'].errors" class="error">
+          <span *ngIf="lf['email'].errors?.['required']">Email is required.</span>
+          <span *ngIf="lf['email'].errors?.['email']">Please enter a valid email.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" formControlName="password" placeholder="Enter your password">
+        <div *ngIf="loginSubmitted && lf['password'].errors" class="error">
+          <span *ngIf="lf['password'].errors?.['required']">Password is required.</span>
+          <span *ngIf="lf['password'].errors?.['minlength']">Password must be at least 6 characters.</span>
+        </div>
+      </div>
+
+      <button type="submit" class="login-btn">Login</button>
+    </form>
+  </div>
+
+  <!-- Registration Form -->
+  <div class="form-wrapper" *ngIf="!isLogin">
+    <h1>Register</h1>
+    <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
+      <div class="form-group">
+        <label for="registerEmail">Email</label>
+        <input type="email" id="registerEmail" formControlName="email" placeholder="Enter your email">
+        <div *ngIf="registerSubmitted && rf['email'].errors" class="error">
+          <span *ngIf="rf['email'].errors?.['required']">Email is required.</span>
+          <span *ngIf="rf['email'].errors?.['email']">Please enter a valid email.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="registerPassword">Password</label>
+        <input type="password" id="registerPassword" formControlName="password" placeholder="Enter your password">
+        <div *ngIf="registerSubmitted && rf['password'].errors" class="error">
+          <span *ngIf="rf['password'].errors?.['required']">Password is required.</span>
+          <span *ngIf="rf['password'].errors?.['minlength']">Password must be at least 6 characters.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="Confirm your password">
+        <div *ngIf="registerSubmitted && rf['confirmPassword'].errors" class="error">
+          <span *ngIf="rf['confirmPassword'].errors?.['required']">Confirmation is required.</span>
+          <span *ngIf="rf['confirmPassword'].errors?.['mismatch']">Passwords do not match.</span>
+        </div>
+      </div>
+
+      <button type="submit" class="login-btn">Register</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="movie-details-container">
+  <h1>Movie Details</h1>
+  
+  <div class="movie-ticket" *ngIf="movie; else noMovie">
+    <!-- Ticket Header -->
+    <div class="ticket-header">
+      <h2>{{ movie.movieName }}</h2>
+    </div>
+
+    <!-- Ticket Body -->
+    <div class="ticket-body">
+      <div class="ticket-poster">
+        <img [src]="movie.poster" [alt]="movie.movieName" class="poster">
+      </div>
+      <div class="ticket-details">
+        <div class="detail-item">
+          <span class="label">Duration:</span>
+          <span class="value">{{ movie.duration }} mins</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Description:</span>
+          <span class="value">{{ movie.description }}</span>
+        </div>
+        <!-- <div class="detail-item">
+          <span class="label">Actors:</span>
+          <span class="value">{{ movie.actors?.join(', ') || 'N/A' }}</span>
+        </div> -->
+        <div class="detail-item">
+          <span class="label">Release Date:</span>
+          <span class="value">{{ movie.releaseDate | date:'MMMM d, yyyy' }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Show Times:</span>
+          <span class="value">{{ movie.showTimes?.join(', ') || 'N/A' }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Language:</span>
+          <span class="value">{{ movie.language }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Type:</span>
+          <span class="value">{{ movie.movieType?.join(', ') || 'N/A' }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Trailer:</span>
+          <span class="value">
+            <a [href]="movie.trailer" target="_blank" class="trailer-link" *ngIf="movie.trailer">Watch Trailer</a>
+            <span *ngIf="!movie.trailer">N/A</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ticket Footer -->
+    <div class="ticket-footer">
+      <button class="book-btn" 
+              *ngIf="canBook()" 
+              (click)="proceedToBooking()">
+        Book Now
+      </button>
+      <span class="coming-soon" *ngIf="!canBook()">Coming Soon</span>
+      <button class="back-btn" (click)="goBack()">Back to Movies</button>
+    </div>
+  </div>
+
+  <ng-template #noMovie>
+    <p class="no-movie">Movie not found.</p>
+  </ng-template>
+</div>

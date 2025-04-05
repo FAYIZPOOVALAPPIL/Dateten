@@ -1,0 +1,64 @@
+<div class="booking-container" *ngIf="movie; else noMovie">
+  <h1>Book Tickets for {{ movie.movieName }}</h1>
+
+  <form [formGroup]="bookingForm" (ngSubmit)="proceedToPayment()">
+    <div class="showtime-selection">
+      <h2>Select Showtime</h2>
+      <div class="showtime-options">
+        <label *ngFor="let showtime of availableShowtimes" class="showtime-label">
+          <input type="radio" formControlName="showtime" 
+                 [value]="showtime.date.toISOString().split('T')[0] + '|' + showtime.time">
+          {{ showtime.date | date:'EEE, MMM d' }} - {{ showtime.time }}
+        </label>
+      </div>
+      <div *ngIf="bookingForm.get('showtime')?.touched && bookingForm.get('showtime')?.invalid" class="error">
+        <span>Please select a showtime.</span>
+      </div>
+    </div>
+
+    <div class="seat-wrapper" *ngIf="selectedShowtime">
+      <div class="form-group">
+        <label>Number of Seats:</label>
+        <input type="number" formControlName="numSeats" min="1" max="10">
+        <div *ngIf="bookingForm.get('numSeats')?.touched && bookingForm.get('numSeats')?.invalid" class="error">
+          <span *ngIf="bookingForm.get('numSeats')?.errors?.['required']">Number of seats is required.</span>
+          <span *ngIf="bookingForm.get('numSeats')?.errors?.['min']">Minimum 1 seat.</span>
+          <span *ngIf="bookingForm.get('numSeats')?.errors?.['max']">Maximum 10 seats.</span>
+        </div>
+      </div>
+
+      <div class="seat-selection" *ngIf="bookingForm.get('numSeats')?.valid">
+        <h2>Select Your Seats</h2>
+        <div class="screen">SCREEN</div>
+        <div class="seat-grid">
+          <div class="seat-row" *ngFor="let row of ['Silver', 'Gold', 'Platinum']">
+            <h3>{{ row }} (₹{{ row === 'Silver' ? 150 : row === 'Gold' ? 250 : 350 }})</h3>
+            <div class="seats">
+              <button *ngFor="let seat of seats | filterByType:row" 
+                      [ngClass]="{
+                        'selected': isSeatSelected(seat), 
+                        'silver': seat.type === 'Silver', 
+                        'gold': seat.type === 'Gold', 
+                        'platinum': seat.type === 'Platinum', 
+                        'booked': bookedSeats.has(seat.id)
+                      }"
+                      [disabled]="isSeatDisabled(seat)"
+                      (click)="toggleSeat(seat)">
+                {{ seat.id.split('')[1] + seat.id.slice(2) }} <!-- Removes prefix letter -->
+              </button>
+            </div>
+          </div>
+        </div>
+        <p>Selected Seats: {{ selectedSeatsDisplay }}</p>
+      </div>
+    </div>
+
+    <div class="payment-section" *ngIf="selectedShowtime">
+      <p class="total-amount">Total Amount: ₹{{ totalAmount }}</p>
+    </div>
+  </form>
+</div>
+
+<ng-template #noMovie>
+  <p class="no-movie">Movie not found.</p>
+</ng-template>

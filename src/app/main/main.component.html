@@ -1,0 +1,50 @@
+
+<div class="netflix-container">
+  <!-- Display search query -->
+  <div *ngIf="searchQuery" class="search-header">
+    <!-- Searching for: {{ searchQuery }} -->
+  </div>
+  
+  <!-- Currently Running Section -->
+   <br><br>
+  <section class="movie-section">
+    <h2>Currently Running</h2>
+    <div class="movie-grid" *ngIf="currentMovies.length > 0; else noCurrent">
+      <div class="movie-card" *ngFor="let item of currentMovies">
+        <img [src]="item.movie.poster" [alt]="item.movie.movieName" class="poster">
+        <div class="card-content">
+          <h3>{{ item.movie.movieName }}</h3>
+          <p>{{ item.movie.language }} | {{ item.movie.movieType.join(', ') }}</p>
+          <p>Show Times: {{ item.movie.showTimes.join(', ') }}</p>
+          <button class="book-btn" (click)="bookNow(item.originalIndex)">
+            Book Now
+          </button>
+        </div>
+      </div>
+    </div>
+    <ng-template #noCurrent>
+      <p class="no-movies">No currently running movies available.</p>
+    </ng-template>
+  </section>
+
+  <!-- Upcoming Section -->
+  <section class="movie-section">
+    <h2>Upcoming Movies</h2>
+    <div class="movie-grid" *ngIf="upcomingMovies.length > 0; else noUpcoming">
+      <div class="movie-card" *ngFor="let item of upcomingMovies">
+        <img [src]="item.movie.poster" [alt]="item.movie.movieName" class="poster">
+        <div class="card-content">
+          <h3>{{ item.movie.movieName }}</h3>
+          <p>{{ item.movie.language }} | {{ item.movie.movieType.join(', ') }}</p>
+          <p>Releasing: {{ item.movie.releaseDate | date:'MMMM d, yyyy' }}</p>
+          <button class="book-btn" (click)="bookNow(item.originalIndex)">
+            Book Now
+          </button>
+        </div>
+      </div>
+    </div>
+    <ng-template #noUpcoming>
+      <p class="no-movies">No upcoming movies available.</p>
+    </ng-template>
+  </section>
+</div>

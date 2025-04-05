@@ -1,0 +1,271 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: #f0eeee; /* Dark theme */
+  color: #e50914;
+}
+
+/* Booking Container */
+.booking-container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.booking-container h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #e50914; /* BookMyShow red */
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Showtime Selection */
+.showtime-selection {
+  margin-bottom: 20px;
+}
+
+.showtime-selection h2 {
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.showtime-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+.showtime-options :hover{
+  border-color: #ff0101;
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.84);
+}
+.showtime-label {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #fee8e976;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.showtime-label input[type="radio"] {
+  margin-right: 10px;
+  accent-color: #e50914;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #240e0e;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #e50914;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #060606;
+}
+
+.form-group input:focus {
+  border-color: #e50914;
+  outline: none;
+}
+
+/* Error Messages */
+.error {
+  color: #e50914;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Seat Wrapper */
+.seat-wrapper {
+  padding: 15px;
+  border: 1px solid #555;
+  border-radius: 4px;
+}
+
+.seat-selection h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Screen */
+.screen {
+  text-align: center;
+  padding: 10px;
+  background-color: #b0070f;
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+/* Seat Grid */
+.seat-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.seat-row h3 {
+  font-size: 16px;
+  color: #e50914;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.seats {
+  display: grid;
+  grid-template-columns: repeat(10, 40px);
+  gap: 5px;
+  justify-content: center;
+}
+
+.seats button {
+  width: 40px;
+  height: 40px;
+  font-size: 12px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background-color: #fdfdfd;
+  color: #4f4343;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.seats button:hover:not(.booked):not(:disabled) {
+  border-color: #ff000d;
+  box-shadow: 0 0 8px rgba(255, 0, 13, 0.6);
+}
+
+.seats button.silver {
+  border-color: #c0c0c0;
+}
+
+.seats button.gold {
+  border-color: #ffd700;
+}
+
+.seats button.platinum {
+  border-color: rgb(33, 228, 33);
+}
+
+.seats button.selected {
+  background-color: #e50914;
+}
+
+.seats button.booked {
+  background-color: #666;
+  border-color: #666;
+  color: white;
+  cursor: not-allowed;
+}
+
+.seats button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.seat-wrapper p {
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+  color: #b3b3b3;
+}
+
+/* Payment Section */
+.payment-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.total-amount {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.pay-btn {
+  width: 100%;
+  max-width: 200px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #e50914;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pay-btn:disabled {
+  background-color: #666;
+  cursor: not-allowed;
+}
+
+.pay-btn:hover:not(:disabled) {
+  background-color: #c00712;
+}
+
+/* No Movie */
+.no-movie {
+  text-align: center;
+  font-size: 16px;
+  color: #b3b3b3;
+  padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .seats {
+    grid-template-columns: repeat(8, 35px);
+  }
+
+  .seats button {
+    width: 35px;
+    height: 35px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .seats {
+    grid-template-columns: repeat(5, 30px);
+  }
+
+  .seats button {
+    width: 30px;
+    height: 30px;
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,218 @@
+/* Movie Details Container */
+.movie-details-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  background: #fff; /* White background */
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+h1 {
+  color: #dc3545; /* BookMyShow red */
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Movie Ticket Card */
+.movie-ticket {
+  background: #fff; /* White card */
+  border: 2px solid #dc3545; /* Red border */
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.movie-ticket:hover {
+  transform: translateY(-5px);
+}
+
+/* Ticket Header */
+.ticket-header {
+  background:#780000; /* Red header */
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 2px dashed #000000; /* White dashed line */
+}
+
+.ticket-header h2 {
+  font-size: 24px;
+  color: #fff; /* White text on red */
+  font-weight: 600;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Ticket Body */
+.ticket-body {
+  display: flex;
+  padding: 2rem;
+  background: #fff; /* White content area */
+}
+
+/* Poster */
+.ticket-poster {
+  flex: 0 0 250px;
+  transition: 0.5s;
+}
+.ticket-poster:hover {
+  transform: scale(1.1);
+}
+
+.poster {
+  width: 100%;
+  height: 350px; /* Fixed height */
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #dc3545; /* Red border */
+}
+
+/* Details */
+.ticket-details {
+  flex: 1;
+  padding-left: 2rem;
+  color: #333; /* Dark text on white */
+}
+
+.detail-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.label {
+  flex: 0 0 120px; /* Fixed width for labels */
+  color: #dc3545; /* Red labels */
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.value {
+  flex: 1;
+  font-size: 16px;
+  color: #333; /* Dark text */
+}
+
+/* Trailer Link */
+.trailer-link {
+  color: #dc3545; /* Red link */
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.trailer-link:hover {
+  text-decoration: underline;
+}
+
+/* Ticket Footer */
+.ticket-footer {
+  background:#780000; /* Red footer */
+  padding: 1.5rem;
+  text-align: center;
+  border-top: 2px dashed #fff; /* White dashed line */
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+}
+
+.book-btn, .back-btn {
+  background: #fff; /* White buttons */
+  color: #dc3545; /* Red text */
+  padding: 0.8rem 1.5rem;
+  border: 2px solid #dc3545; /* Red border */
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.book-btn:hover, .back-btn:hover {
+  background: #dc3545; /* Red on hover */
+  color: #fff; /* White text on hover */
+}
+
+.back-btn {
+  background: #f8f8f8; /* Slightly off-white for back */
+  color: #dc3545;
+}
+
+.back-btn:hover {
+  background: #dc3545;
+  color: #fff;
+}
+
+.coming-soon {
+  font-size: 16px;
+  color: #fff; /* White on red footer */
+  font-style: italic;
+}
+
+/* No Movie */
+.no-movie {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666; /* Grey text */
+  padding: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ticket-body {
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+
+  .ticket-poster {
+    flex: none;
+    width: 100%;
+    height: 250px;
+  }
+
+  .ticket-details {
+    padding-left: 0;
+    padding-top: 1.5rem;
+  }
+
+  .detail-item {
+    flex-direction: column;
+  }
+
+  .label {
+    flex: none;
+    margin-bottom: 0.3rem;
+  }
+
+  .ticket-footer {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .ticket-header h2 {
+    font-size: 20px;
+  }
+
+  .label, .value {
+    font-size: 14px;
+  }
+
+  .book-btn, .back-btn {
+    padding: 0.6rem 1rem;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,378 @@
+/* Container */
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* Back Button */
+.back-btn {
+  background-color: #b30000; /* Gray color */
+  color: #fff;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 150px;
+  height: 50px;
+}
+
+.back-btn:hover {
+  background-color: #6e6767; /* Darker gray on hover */
+}
+
+/* Headings */
+h2 {
+  color: #dc3545;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Form */
+form {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+form > div {
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  color: #343131;
+  margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="url"],
+input[type="date"],
+textarea,
+select {
+  padding: 0.6rem 1rem;
+  border: 1px solid #dc3545;
+  border-radius: 20px;
+  font-size: 1rem;
+  color: #343131;
+  outline: none;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+  border-radius: 10px;
+}
+
+select[multiple] {
+  padding: 0.5rem;
+  height: auto;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #c82333;
+  box-shadow: 0 0 5px rgba(200, 35, 51, 0.3);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #404245;
+}
+
+.error {
+  color: #dc3545;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+/* Submit Button */
+form button[type="submit"] {
+  background-color: #dc3545;
+  color: #fff;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+  align-self: center;
+}
+
+form button[type="submit"]:hover {
+  background-color: #c82333;
+}
+
+form button[type="submit"]:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Movie List Section */
+.movie-list {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  table-layout: auto;
+}
+
+thead {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+th {
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: left;
+}
+
+tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+td {
+  padding: 1rem;
+  font-size: 1rem;
+  color: #343131;
+  vertical-align: middle;
+}
+
+td img {
+  max-width: 100px;
+  height: auto;
+  border-radius: 4px;
+}
+
+td a {
+  color: #dc3545;
+  text-decoration: none;
+}
+
+td a:hover {
+  text-decoration: underline;
+}
+
+/* Action Buttons (Edit and Delete) */
+.edit-icon,
+.delete-icon {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  padding: 0;
+  color: #343131;
+  transition: color 0.3s ease;
+}
+
+.edit-icon:hover {
+  color: #007bff;
+}
+
+.delete-icon:hover {
+  color: #dc3545;
+}
+
+/* Export Buttons (Today's Report) */
+.movie-list .edit-btn,
+.movie-list .delete-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-btn {
+  background-color: #b30000; /* Gray color */
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 150px;
+  height: 50px;
+}
+
+.edit-btn:hover {
+  background-color: #6e6767;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* No Movies Message */
+p {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  padding: 2rem;
+  font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  form > div {
+    margin-bottom: 1rem;
+  }
+
+  th, td {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+
+  td img {
+    max-width: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  form {
+    padding: 1rem;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tbody tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+  tbody td {
+    display: block;
+    text-align: right;
+    padding: 0.8rem;
+    position: relative;
+  }
+
+  tbody td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0.8rem;
+    font-weight: bold;
+    color: #dc3545;
+    text-align: left;
+    width: 40%;
+  }
+
+  td img {
+    margin-left: 40%;
+  }
+
+  .edit-icon,
+  .delete-icon {
+    font-size: 1.1rem;
+    margin: 0.2rem 1% 0 1%;
+    display: inline-block;
+  }
+
+  .movie-list .edit-btn,
+  .movie-list .delete-btn {
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  input[type="text"],
+  input[type="url"],
+  input[type="date"],
+  textarea,
+  select {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  form button[type="submit"] {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  th, td {
+    font-size: 0.8rem;
+    padding: 0.6rem;
+  }
+
+  td img {
+    max-width: 60px;
+  }
+
+  .edit-icon,
+  .delete-icon {
+    font-size: 1rem;
+  }
+
+  .back-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    width: 10px;
+  }
+}

@@ -1,0 +1,19 @@
+<header class="header">
+  <div class="logo">
+    <a routerLink="/main">
+      <img src="/assets/ticketbox-removebg-preview.png" alt="Logo" class="logo-img">
+    </a>
+  </div>
+  <div class="search-container">
+    <input
+      [formControl]="searchControl"
+      type="text"
+      placeholder="Search movies..."
+      class="search-input"
+    />
+    <button class="clear-btn btn-outline-light" *ngIf="searchControl.value" (click)="clearSearch()">✖</button>
+  </div>
+  <nav class="nav-links">
+    <button class="login-btn" (click)="goToLogin()">Login</button>
+  </nav>
+</header>

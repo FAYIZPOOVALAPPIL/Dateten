@@ -1,0 +1,33 @@
+<div class="container">
+    <div style="text-align: right; margin-bottom: 1rem;">
+      <button class="back-btn" (click)="goBack()">Back to Admin</button>
+    </div>
+    <h2>Today's Bookings</h2>
+    <div class="movie-list" *ngIf="todayBookings.length > 0; else noBookings">
+      <table>
+        <thead>
+          <tr>
+            <th>Sl No</th>
+            <th>Movie Name</th>
+            <th>Booking Time</th>
+            <th>Booked Seats</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let booking of todayBookings">
+            <td>{{ booking.slNo }}</td>
+            <td>{{ booking.movieName }}</td>
+            <td>{{ booking.bookingTime }}</td>
+            <td>{{ booking.bookedSeats }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top: 1rem; text-align: center;">
+        <button class="edit-btn" (click)="exportToExcel()">Export to Excel</button>
+        <button class="delete-btn" (click)="exportToPDF()" style="margin-left: 1rem;">Export to PDF</button>
+      </div>
+    </div>
+    <ng-template #noBookings>
+      <p>No bookings for today.</p>
+    </ng-template>
+  </div>

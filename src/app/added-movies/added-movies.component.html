@@ -1,0 +1,41 @@
+<div class="container">
+  
+  <h2 class="mt-3">Added Movies</h2>
+  <div style="text-align: right; margin-bottom: 1rem;">
+    <button class="back-btn" (click)="goBack()">Back to Admin</button>
+  </div>
+  <div class="movie-list" *ngIf="movies.length > 0; else noMovies">
+    <table>
+      <thead>
+        <tr>
+          <th>Movie Name</th>
+          <th>Duration</th>
+          <th>Release Date</th>
+          <th>Show Times</th>
+          <th>Poster</th>
+          <th>Language</th>
+          <th>Type</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let movie of movies; let i = index">
+          <td data-label="Movie Name">{{ movie.movieName }}</td>
+          <td data-label="Duration">{{ movie.duration }}</td>
+          <td data-label="Release Date">{{ formatDate(movie.releaseDate) }}</td>
+          <td data-label="Show Times">{{ movie.showTimes.join(', ') }}</td>
+          <td data-label="Poster"><img *ngIf="movie.poster" [src]="movie.poster" alt="Movie Poster" width="100"></td>
+          <td data-label="Language">{{ movie.language }}</td>
+          <td data-label="Type">{{ movie.movieType.join(', ') }}</td>
+          <td data-label="Actions">
+            <button class="edit-icon" (click)="editMovie(i)" title="Edit">🖌️</button>
+            <button class="delete-icon fa fa-trash" (click)="deleteMovie(i)" title="Delete">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noMovies>
+    <p>No movies added yet.</p>
+  </ng-template>
+</div>
